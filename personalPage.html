@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haoyu (Harris) Teng's Personal Homepage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 800px; /* Adjusted max-width for single column */
+            width: 100%;
+            display: flex;
+            flex-direction: column; /* Ensure single column */
+            gap: 20px;
+            box-sizing: border-box;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            position: relative;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            background-color: #ddd;
+            border-radius: 0; /* Square photo */
+            margin: 0 auto 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border: 3px solid #0056b3; /* Darker blue */
+            color: #555;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: #0056b3; /* Darker blue */
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .contact-info a {
+            color: #555;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #0056b3; /* Darker blue */
+        }
+
+        .section {
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .section h2 {
+            font-size: 1.8em;
+            color: #0056b3; /* Darker blue */
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #0056b3; /* Darker blue */
+        }
+
+        .content-block {
+            margin-bottom: 15px;
+        }
+
+        .content-block p {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0; /* Removed default list padding */
+            margin: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 0; /* Removed padding for all list items */
+            margin-bottom: 8px;
+        }
+
+        /* Adjusted for single line skills */
+        .skill-category ul {
+            display: inline; /* Makes the list items appear inline */
+        }
+        .skill-category ul li {
+            display: inline; /* Makes each list item appear inline */
+            padding-left: 0; /* Remove padding from list item */
+            margin-bottom: 0; /* Remove margin from list item */
+        }
+        .skill-category ul li:not(:last-child)::after {
+            content: ' / '; /* Add a separator between items */
+            font-weight: normal;
+            color: #333;
+        }
+        .skill-category ul li::before {
+            content: none; /* Remove bullet point for inline list */
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 5px;
+        }
+
+        .item-header h3 {
+            margin: 0;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .item-header span {
+            font-style: italic;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .item-details {
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        .skill-category {
+            margin-bottom: 15px;
+        }
+
+        .skill-category strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #0056b3; /* Darker blue */
+        }
+
+        /* Responsive adjustments for single column */
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: column; /* Force single column on larger screens too */
+                padding: 40px;
+            }
+
+            header {
+                text-align: center; /* Re-center header for single column */
+                display: block; /* Remove flex display from header */
+                padding-bottom: 20px;
+                border-bottom: 2px solid #eee;
+            }
+
+            .profile-photo {
+                margin: 0 auto 15px; /* Center photo */
+            }
+
+            .contact-info {
+                justify-content: center; /* Center contact info */
+            }
+
+            /* Remove sidebar-specific styles */
+            .main-content, .sidebar {
+                flex: none;
+                padding-left: 0;
+                padding-right: 0;
+                border-left: none;
+            }
+
+            .section.skills-section,
+            .section.honors-section,
+            .section.hobbies-section {
+                border-top: 1px solid #eee; /* Ensure borders between sections */
+            }
+        }
+
+        @media (max-width: 767px) {
+            .container {
+                padding: 20px;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+            .section h2 {
+                font-size: 1.5em;
+            }
+            .item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile-photo">
+                <span>Your Photo Here</span>
+            </div>
+            <div class="header-info">
+                <h1>Haoyu (Harris) Teng</h1>
+                <div class="contact-info">
+                    <a href="mailto:hrsteng@zju.edu.cn">hrsteng@zju.edu.cn</a>
+                    <span>|</span>
+                    <a href="tel:+86-193-57575456">+86 19357575456</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="section">
+            <h2>About Me</h2>
+            <div class="content-block">
+                <p>
+                    I am currently a third-year psychology student at Zhejiang University, with a strong passion for interdisciplinary research at the intersection of cognitive science, human-computer interaction, and applied neuroscience. Throughout my undergraduate journey, I have gained hands-on experience in experimental design, interactive software development, and multimodal data collection. My projects often integrate tools such as <strong>Python</strong>, <strong>Unity</strong>, and <strong>eye-tracking hardware</strong>, allowing me to explore how humans interact with intelligent systems in dynamic and real-world contexts.
+                </p>
+                <p>
+                    Since childhood, I have demonstrated a strong aptitude for sports—I am able to quickly pick up new physical skills and turn them into lasting hobbies. I maintain a daily fitness routine and enjoy a variety of sports including <strong>basketball</strong>, <strong>rugby</strong>, and <strong>rock climbing</strong>, which help me stay focused and build teamwork and resilience. Outside of athletics, I also have a deep appreciation for diverse cuisines, especially <strong>Sichuan and Yunnan food</strong>. I often explore local restaurants to discover new flavors and culinary styles. In addition, I enjoy <strong>photography</strong> and <strong>hiking</strong>, which allow me to stay curious, observant, and creatively engaged with the world around me.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Research Interests</h2>
+            <div class="content-block">
+                <p>
+                    My research interests center on <strong>human performance modeling</strong> and the <strong>cognitive mechanisms underlying human-AI interaction</strong>. I am particularly drawn to how adaptive technologies can be designed to align with human cognitive states and needs. My long-term goal is to contribute to the development of intelligent systems that are not only technically robust but also cognitively and socially aware.
+                </p>
+                <ul>
+                    <li><strong>Specific Areas:</strong> Autonomous Driving, Human-Robot Interaction, Neuroergonomics</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Education</h2>
+            <div class="item-header">
+                <h3><strong>Zhejiang University, Chu Kochen Honors College</strong>, BS in Psychology</h3>
+                <span>Sep. 2022 - Jun. 2026 (Expected)</span>
+            </div>
+            <div class="item-header">
+                <h3><strong>Taizhou No.1 High School</strong>, High School</h3>
+                <span>Sep. 2019 - Jun. 2022</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Presentations</h2>
+            <div class="content-block">
+                <p>
+                    <strong>The Impact of Dual-AI Collaboration Models on User Trust: Cooperation and Divergence</strong> (Li, J., Chen, L., Tang, Z., <strong>Teng, H.*</strong>, Gao, Z.*) – <em>2025 China Ergonomics Society Academic Conference</em>, July 2025, oral presentation.
+                </p>
+                <p></p>
+                    <strong>Responsiveness in Social Interaction: A Study of Temporal Effects Across Perspectives</strong> (<strong>Teng, H.*</strong>, Yu, C., Hu, L., Gao, Z.*) – <em>The 6th China Vision Science Conference</em>, Nov. 2024, poster presentation.
+                </p>
+                <p>
+                    <strong>The Sense of Control in Autonomous Driving</strong> (Yin, Y., Gao, Q., Chen, L., Yu, C., <strong>Teng, H.*</strong>, Shen, M.* & Gao, Z.*) – <em>22nd Triennial Congress of the International Ergonomics Association</em>, Aug. 2024, poster presentation.
+                </p>
+                <p>
+                    <strong>The Mental Clock of Social Interaction: After an Action is Initiated, When Should the Other React?</strong> (Shen, J., <strong>Teng, H.*</strong>, Gao, Z.*) – <em>2023 Annual Academic Conference of Zhejiang Psychological Association</em>, Nov. 2023, oral presentation.
+                </p>
+                <p>
+                    <strong>Attention and Mental Workload: Cognitive factors in Autonomous Driving</strong> (<strong>Teng, H.</strong>, Gao, Z.*) – <em>Undergraduate Research Poster Session, Department of Psychology, Zhejiang University</em>, Sep. 2023, poster presentation.
+                </p>
+                
+
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Skills</h2>
+            <div class="content-block">
+                <div class="skill-category">
+                    <strong>Programming Languages:</strong> 
+                    <span style="color: #000; font-weight: normal;">R / Python / C# / C / JavaScript / MATLAB</span>
+                </div>
+                <div class="skill-category">
+                    <strong>Software & Platforms:</strong>
+                    <span style="color: #000; font-weight: normal;">Unity / Tobii Lab / CARLA / Ollama</span>
+                </div>
+                <div class="skill-category">
+                    <strong>Hardware:</strong>
+                    <span style="color: #000; font-weight: normal;">Driving Simulator / Eye-Tracker / VR / Multichannel Physiological Recorder</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section honors-section">
+            <h2>Honors & Awards</h2>
+            <ul>
+                <li>2023 Zhejiang Provincial Government Scholarship</li>
+                <li>2023, 2024 First Prize Scholarship of Zhejiang University</li>
+                <li>2023, 2024 Second Prize Outstanding Basic Disciplines Scholarship, Chu Kochen Honors College</li>
+                <li>2023, 2024, 2025 Outstanding Poster Award, Department of Psychology</li>
+            </ul>
+        </div>
+
+        <div class="section hobbies-section">
+            <h2>Hobbies</h2>
+            <ul>
+                <li><strong>Sports:</strong> Basketball, Billiards, Rugby, Rock Climbing, Volleyball, Soccer, Table Tennis</li>
+                <li><strong>Cuisine:</strong> Sichuan Cuisine, Yunnan-Guizhou Cuisine, BBQ, American Burgers, Japanese Cuisine, Italian Cuisine</li>
+                <li>Hiking, Photography, R&B & Hip-Hop, Watching Detective Shows</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
